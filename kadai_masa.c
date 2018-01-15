@@ -22,9 +22,9 @@
 int main (void)
 {
     int Year1=0,Year2=0,Mon1=0,Mon2=0,Day1=0,Day2=0,Nissu=0;		/* 日付1と日付2の年月日格納 */
-    int     chk_date,chk_date2					;					/* 月と日をチェック用 */
-    char    conv[ 10 ];												/* 日付を文字列にする */
-    char    work[ 128 ];											/* 入力された日付を格納*/
+    int     chk_date,chk_date2;						/* 月と日をチェック用 */
+    char    conv[ 10 ];							/* 日付を文字列にする */
+    char    work[ 128 ];						/* 入力された日付を格納*/
 
     while( 1 ) {
         printf( "\n 日付1( YYYYMMDD  )" );
@@ -32,7 +32,7 @@ int main (void)
         work[ 0 ] = '\0';
         scanf( "%s", work );
 
-        if( strlen( work ) != 8 ) {									/* 年月日をきちんと入力するまで繰り返し */
+        if( strlen( work ) != 8 ) {					/* 年月日をきちんと入力するまで繰り返し */
             printf( "\n 日付の桁が合いません" );
             continue;
         }
@@ -63,56 +63,56 @@ int main (void)
 
         break;
     }
-    conv[0] = work[0];											/* 年の千の位代入 */
-    conv[1] = work[1];											/* 年の百の位代入 */
-    conv[2] = work[2];											/* 年の十の位代入 */
-    conv[3] = work[3];											/* 年の一の位代入 */
+    conv[0] = work[0];							/* 年の千の位代入 */
+    conv[1] = work[1];							/* 年の百の位代入 */
+    conv[2] = work[2];							/* 年の十の位代入 */
+    conv[3] = work[3];							/* 年の一の位代入 */
     conv[4] = '\0';
     Year1 = atoi(conv);
     Mon1 = chk_date;
     Day1 = chk_date2;
     
-        while( 1 ) {
-        printf( "\n 日付2( YYYYMMDD  )" );
+while( 1 ) {
+	printf( "\n 日付2( YYYYMMDD  )" );
 
-        work[ 0 ] = '\0';
-        scanf( "%s", work );
+	work[ 0 ] = '\0';
+	scanf( "%s", work );
 
-        if( strlen( work ) != 8 ) {								/* 年月日をきちんと入力するまで繰り返し */
-            printf( "\n 日付の桁が合いません" );
-            continue;
-        }
+	if( strlen( work ) != 8 ) {					/* 年月日をきちんと入力するまで繰り返し */
+	    printf( "\n 日付の桁が合いません" );
+	    continue;
+	}
 
-        if( strspn( work, "1234567890" ) < strlen( work ) ) {
-            printf( "\n 数値以外が入力されました" );
-            continue;
-        }
+	if( strspn( work, "1234567890" ) < strlen( work ) ) {
+	    printf( "\n 数値以外が入力されました" );
+	    continue;
+	}
 
-        conv[0] = work[4];
-        conv[1] = work[5];
-        conv[2] = '\0';
+	conv[0] = work[4];
+	conv[1] = work[5];
+	conv[2] = '\0';
 
-        chk_date = atoi( conv );
-        if( chk_date > 12 || chk_date < 1 ) {
-            printf( "\n 日付( 月 )が正しくありません" );
-            continue;
-        }
+	chk_date = atoi( conv );
+	if( chk_date > 12 || chk_date < 1 ) {
+	    printf( "\n 日付( 月 )が正しくありません" );
+	    continue;
+	}
 
-        conv[0] = work[6];
-        conv[1] = work[7];
-        conv[2] = '\0';
-        chk_date2 = atoi( conv );
-        if( chk_date2 > 31 || chk_date2 < 1 ) {
-            printf( "\n 日付( 日 )が正しくありません" );
-            continue;
-        }
+	conv[0] = work[6];
+	conv[1] = work[7];
+	conv[2] = '\0';
+	chk_date2 = atoi( conv );
+	if( chk_date2 > 31 || chk_date2 < 1 ) {
+	    printf( "\n 日付( 日 )が正しくありません" );
+	    continue;
+	}
 
-        break;
+	break;
     }
-    conv[0] = work[0];											/* 年の千の位代入 */
-    conv[1] = work[1];											/* 年の百の位代入 */
-    conv[2] = work[2];											/* 年の十の位代入 */
-    conv[3] = work[3];											/* 年の一の位代入 */
+    conv[0] = work[0];							/* 年の千の位代入 */
+    conv[1] = work[1];							/* 年の百の位代入 */
+    conv[2] = work[2];							/* 年の十の位代入 */
+    conv[3] = work[3];							/* 年の一の位代入 */
     conv[4] = '\0';
     Year2 = atoi(conv);
     Mon2 = chk_date;
@@ -136,13 +136,13 @@ int niti(Year1,Year2,Mon1,Mon2,Day1,Day2,Nissu)
 	int uru=0;
 	while((Year1 != Year2) || (Mon1 != Mon2) || (Day1 != Day2)) {
 		if(Mon1 == 2) {
-			uru = ururu(Year1,uru);								/* うるう年計算 */
+			uru = ururu(Year1,uru);				/* うるう年計算 */
 			if(uru == 0 && Day1 == 28) {
 				Mon1++;
 				Day1=1;
 				Nissu++;
 			}
-			else if(uru == 1 && Day1==29) {						/* うるう年の月末処理 */
+			else if(uru == 1 && Day1==29) {			/* うるう年の月末処理 */
 				Mon1++;
 				Day1=1;
 				Nissu++;
@@ -164,7 +164,7 @@ int niti(Year1,Year2,Mon1,Mon2,Day1,Day2,Nissu)
 			}
 		}
 		else if(Day1 == 31) {
-			if(Mon1 == 12) {									/* 年末処理 */
+			if(Mon1 == 12) {				/* 年末処理 */
 				Mon1 = 1;
 				Day1 = 1;
 				Nissu++;
